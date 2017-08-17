@@ -20,7 +20,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/mainPage", method = RequestMethod.GET)
 	public String home(Model model) {
 		String content = "mainPage";
 		model.addAttribute("contents", content);
@@ -28,4 +28,8 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String login(Model model) {
+		return "login";
+	}
 }
