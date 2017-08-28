@@ -6,7 +6,10 @@
 
 <mapper namespace="yjc.wdb.mapper.UserMapper">
 
-
-
+<select id="login" resultType="int">
+	select count(*)
+	from member
+	where m_id = #{m_id} and m_pw = #{m_pw}
+</select>
 
 </mapper>

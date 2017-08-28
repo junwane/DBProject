@@ -2,12 +2,24 @@ package yjc.wdb.awesome;
 
 
 
+import java.io.File;
+
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+import yjc.wdb.awesome.bean.Member;
+import yjc.wdb.awesome.dao.MemberDAO;
 
 /**
  * Handles requests for the application home page.
@@ -17,6 +29,11 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
+	@Inject
+	private MemberDAO memberDao;
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -33,12 +50,55 @@ public class HomeController {
 		return "login";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login2(Model model, HttpServletRequest req, Member member) throws Exception {
+		member.setM_id(req.getParameter("username"));
+		member.setM_pw(req.getParameter("password"));
 
+		if(memberDao.login(member) == 1){
+			return "success";
+		}
+		else{
+			return "fail";
+		}
+	}
+	
 	@RequestMapping(value= "/account", method = RequestMethod.GET)
 	public String account(Model model){
 		return "account";
 	}
 
+	@RequestMapping(value= "/account", method = RequestMethod.POST)
+	public String account2(Model model, MultipartFile m_img, Member member)throws Exception{
+		/*if(m_voice.getOriginalFilename() != ""){
+			  String savedName=
+				uploadReviewFileUtils.uploadFile(uploadPath, m_voice.getOriginalFilename(), m_voice.getBytes());
+			  
+			  member.setM_voice(savedName);
+		}*/
+		/*if(m_img.getOriginalFilename() != ""){
+			  String savedName=
+				uploadReviewFileUtils.uploadFile(uploadPath, m_img.getOriginalFilename(), m_img.getBytes());
+			  
+			  member.setM_img(savedName);
+		}*/
+		
+		return "login";
+	}
+	
+	private String uploadFile(String originalName, byte[] fileData) throws Exception {
+
+		/*UUID uid = UUID.randomUUID();*/
+
+		String savedName = /*uid.toString() + "_" +*/ originalName;
+
+		File target = new File(uploadPath, savedName);
+
+		FileCopyUtils.copy(fileData, target);
+
+		return savedName;
+	}
 	
 	@RequestMapping(value = "/AllSounds", method = RequestMethod.GET)
 	public String AllSounds(Model model) {
