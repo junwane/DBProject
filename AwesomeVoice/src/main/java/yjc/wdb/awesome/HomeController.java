@@ -33,12 +33,12 @@ public class HomeController {
 		return "login";
 	}
 	
-<<<<<<< HEAD
+
 	@RequestMapping(value= "/account", method = RequestMethod.GET)
 	public String account(Model model){
 		return "account";
 	}
-=======
+
 	
 	@RequestMapping(value = "/AllSounds", method = RequestMethod.GET)
 	public String AllSounds(Model model) {
@@ -96,7 +96,5 @@ public class HomeController {
 	
 		return "index";
 	}
-	
-	
->>>>>>> branch 'master' of https://github.com/junwane/DBProject.git
+
 }
