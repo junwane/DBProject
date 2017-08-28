@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +20,7 @@
 			<input type="text" name="username" placeholder="Username" class="form-control" />
 			<input type="text" name="username" placeholder="Password" class="form-control" />
 			<button type="button" class="btn btn-default btn-block btn-custom">Login</button>
-			<button id="account"type="button" class="btn btn-default btn-block">Acount</button>
+			<a id="account" type="button" class="btn btn-default btn-block" href="account">Acount</a>
 		</div><!-- /.controls -->
 	</div><!-- /#login-box -->
 </div><!-- /.container -->
