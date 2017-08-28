@@ -32,4 +32,9 @@ public class HomeController {
 	public String login(Model model) {
 		return "login";
 	}
+	
+	@RequestMapping(value= "/account", method = RequestMethod.GET)
+	public String account(Model model){
+		return "account";
+	}
 }
