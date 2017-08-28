@@ -33,8 +33,70 @@ public class HomeController {
 		return "login";
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(value= "/account", method = RequestMethod.GET)
 	public String account(Model model){
 		return "account";
 	}
+=======
+	
+	@RequestMapping(value = "/AllSounds", method = RequestMethod.GET)
+	public String AllSounds(Model model) {
+		String content = "allSounds";
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	@RequestMapping(value = "/SongSounds", method = RequestMethod.GET)
+	public String SongSounds(Model model) {
+		String content = "songSounds";
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	@RequestMapping(value = "/CopySounds", method = RequestMethod.GET)
+	public String CopySounds(Model model) {
+		String content = "copySounds";
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	@RequestMapping(value = "/LookForSounds", method = RequestMethod.GET)
+	public String LookForSounds(Model model) {
+		String content = "lookForSounds";
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	
+	@RequestMapping(value = "/UnknownSounds", method = RequestMethod.GET)
+	public String UnknownSounds(Model model) {
+		String content = "unknownSounds";
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	@RequestMapping(value = "/GradeSounds", method = RequestMethod.GET)
+	public String GradeSounds(Model model) {
+		String content = "gradeSounds";
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	@RequestMapping(value = "/MyPage", method = RequestMethod.GET)
+	public String MyPage(Model model) {
+		String content = "MyPage";
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	
+>>>>>>> branch 'master' of https://github.com/junwane/DBProject.git
 }
