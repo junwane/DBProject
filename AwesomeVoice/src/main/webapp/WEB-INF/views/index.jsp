@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,8 +38,57 @@
 	rel="stylesheet" type="text/css">
 <link href="resources/contents/css/customize.css" rel="stylesheet"
 	type="text/css">
+<style>
+a {
+	text-decoration: none;
+}
+</style>
 <!-- Font Awesome -->
 <script src="https://use.fontawesome.com/e9965a82bb.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.js"
+	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+	crossorigin="anonymous"></script>
+<script>
+	$(document).ready(function() {
+		$(".main").click(function() {
+			window.location.href = "mainPage";
+		});
+
+		$(".AllSounds").click(function() {
+			window.location.href = "AllSounds";
+		});
+
+		$(".main").click(function() {
+			window.location.href = "mainPage";
+		});
+
+		$(".SongSounds").click(function() {
+			window.location.href = "SongSounds";
+		});
+
+		$(".CopySounds").click(function() {
+			window.location.href = "CopySounds";
+		});
+
+		$(".LookForSounds").click(function() {
+			window.location.href = "LookForSounds";
+		});
+
+		$(".UnknownSounds").click(function() {
+			window.location.href = "UnknownSounds";
+		});
+
+		$(".GradeSounds").click(function() {
+			window.location.href = "GradeSounds";
+		});
+		
+		$(".myPage").click(function() {
+			window.location.href = "MyPage";
+		});
+		
+		
+	});
+</script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -48,33 +97,35 @@
 			<div
 				class="list-group cbp-l-filters-button js-filters-juicy-projects">
 				<div data-filter="*" class="cbp-filter-item list-group-item logo">
-					<img src="resources/contents/images/logo.png" alt="img" />
+					<span style="font-weight: bold; font-size: 35px;" class="main">AWESOME
+						VOICE</span>
 				</div>
-				<div data-filter="*"
-					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
+
+				<div
+					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase main">
 					BEST SOUNDS</div>
-				<div data-filter=".movie"
-					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
+				<div
+					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase AllSounds">
 					ALL SOUNDS</div>
-				<div data-filter=".identity"
-					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
+				<div
+					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase SongSounds">
 					SONG SOUNDS</div>
-				<div data-filter=".web-design"
-					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">COPY
-					SOUNDS</div>
-				<div data-filter=".graphic"
-					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
+				<div
+					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase CopySounds">
+					COPY SOUNDS</div>
+				<div
+					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase LookForSounds">
 					LOOK FOR SOUNDS</div>
-				<div data-filter=".logos"
-					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
+				<div
+					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase UnknownSounds">
 					UNKNOWN SOUNDS</div>
-				<div data-filter=".logos"
-					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
+				<div
+					class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase GradeSounds">
 					GRADE SOUNDS</div>
 				<!--Contact-->
 				<div class="list-group-item">
 					<address>
-						<strong>USER</strong> <a><i class="fa fa-cog"
+						<strong class="myPage">USER</strong> <a href="MyPage"><i class="fa fa-cog myPage"
 							aria-hidden="true"></i></a><br>
 
 					</address>
@@ -82,10 +133,11 @@
 				<!--/Contact-->
 			</div>
 		</div>
+
 		<!-- /Menu-->
 		<div class="main">
 			<!--Mobile Menu-->
-			<div class="visible-xs">
+			<!-- <div class="visible-xs">
 				<nav class="navbar navbar-default">
 					<div class="container-fluid">
 						<div id="BtnMobilMenu" class="navbar-header text-center">
@@ -109,25 +161,25 @@
 									class="cbp-singlePage list-group-item text-center hvr-underline-from-center text-uppercase"><a
 									href="about-me.html" class="cbp-singlePage"
 									data-cbp-singlePage="myCustomSinglePage1">About Me</a></li>
-								<div data-filter="*"
+								<div
 									class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
 									BEST SOUNDS</div>
-								<div data-filter=".movie"
+								<div
 									class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
 									ALL SOUNDS</div>
-								<div data-filter=".identity"
+								<div
 									class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
 									SONG SOUNDS</div>
-								<div data-filter=".web-design"
+								<div
 									class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">COPY
 									SOUNDS</div>
-								<div data-filter=".graphic"
+								<div
 									class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
 									LOOK FOR SOUNDS</div>
-								<div data-filter=".logos"
+								<div
 									class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
 									UNKNOWN SOUNDS</div>
-								<div data-filter=".logos"
+								<div
 									class="cbp-filter-item list-group-item hvr-underline-from-left text-uppercase">
 									GRADE SOUNDS</div>
 							</ul>
@@ -135,10 +187,12 @@
 					</div>
 				</nav>
 			</div>
-			<!-- /Mobile Menu-->
-			
-			<jsp:include page="${contents}.jsp"></jsp:include>
-			
+		</div> -->
+
+		<!-- /Mobile Menu-->
+
+		<jsp:include page="${contents}.jsp"></jsp:include>
+	</div>
 	<!--footer -->
 	<footer class="footer">
 		<div class="container-fluid">
@@ -152,9 +206,9 @@
 						<address>
 							<strong>Company, Inc.</strong><br> 1234 Lorem Street, 100<br>
 							Lorem Ipsum City, 10100<br> <abbr title="Phone">P:</abbr>
-							(123) 456-7890 <br />
-							<br /> <i aria-hidden="true" data-toggle="modal"
-								data-target="#map" class="glyphicon glyphicon-map-marker"></i>
+							(123) 456-7890 <br /> <br /> <i aria-hidden="true"
+								data-toggle="modal" data-target="#map"
+								class="glyphicon glyphicon-map-marker"></i>
 						</address>
 						<address>
 							<strong>Your Name</strong><br> <a href="mailto:#">your.name@email.com</a>
