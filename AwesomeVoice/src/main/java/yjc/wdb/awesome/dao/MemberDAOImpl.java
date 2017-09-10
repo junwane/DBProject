@@ -22,4 +22,17 @@ public class MemberDAOImpl implements MemberDAO {
 		return session.selectOne(namespace+".login", member);
 	}
 
+	@Override
+	public void account(Member member) throws Exception {
+		// TODO Auto-generated method stub
+		System.out.println(member.getM_info());
+		session.insert(namespace+".account", member);
+	}
+
+	@Override
+	public int useryn(String m_id) throws Exception {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".useryn", m_id);
+	}
+
 }

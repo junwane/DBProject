@@ -69,21 +69,30 @@ public class HomeController {
 		return "account";
 	}
 
+	@RequestMapping(value= "/useryn", method = RequestMethod.GET)
+	@ResponseBody
+	public int useryn(Model model, HttpServletRequest req)throws Exception{
+		int useryn = memberDao.useryn(String.valueOf(req.getParameter("m_id")));
+		return useryn;
+	}
+	
 	@RequestMapping(value= "/account", method = RequestMethod.POST)
-	public String account2(Model model, MultipartFile m_img, Member member)throws Exception{
-		/*if(m_voice.getOriginalFilename() != ""){
-			  String savedName=
-				uploadReviewFileUtils.uploadFile(uploadPath, m_voice.getOriginalFilename(), m_voice.getBytes());
-			  
-			  member.setM_voice(savedName);
-		}*/
-		/*if(m_img.getOriginalFilename() != ""){
-			  String savedName=
-				uploadReviewFileUtils.uploadFile(uploadPath, m_img.getOriginalFilename(), m_img.getBytes());
-			  
-			  member.setM_img(savedName);
-		}*/
+	public String account2(Model model, Member member, MultipartFile file, MultipartFile file2, HttpServletRequest req)throws Exception{
+		req.setCharacterEncoding("utf-8");
 		
+		if(file2.getOriginalFilename() != ""){
+			  String m_voice=
+				uploadReviewFileUtils.uploadFile(uploadPath, file2.getOriginalFilename(), file2.getBytes());
+
+			  member.setM_voice(m_voice);
+		}
+		if(file.getOriginalFilename() != ""){
+			  String m_img=
+				uploadReviewFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+			
+			  member.setM_img(m_img);
+		  }
+		memberDao.account(member);
 		return "login";
 	}
 	
