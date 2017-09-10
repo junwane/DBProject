@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="./resources/contents/css/login.css">
 <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400' rel='stylesheet' type='text/css'>
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="./resources/contents/js/jquery-1.12.4.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="./resources/contents/js/login.js"></script>
-<script src="./resources/contents/js/jquery-1.12.4.min.js"></script>
+
 <style>
 textarea {
   margin-top:5px;
@@ -81,6 +81,9 @@ textarea {
   right: 0;
   bottom: 0;
   left: 0;
+}
+#userynBtn:hover{
+	text-decoration:none;
 }
 </style>
 <script>
@@ -191,16 +194,50 @@ app.controller('AppCtrl', ['$scope', '$http', '$timeout', function($scope, $http
 </script>
 <script>
 function submitButton(){
-	var accountForm = $("#accountForm");
-	accountForm.attr("method", "post");
-	accountForm.attr("action", "account");
-	accountForm.submit();
+	if($("#useryn").val() == "y"){
+		if($("#m_pw").val() != ""){
+			var accountForm = $("#accountForm");
+			accountForm.attr("method", "post");
+			accountForm.attr("action", "account");
+			accountForm.submit();
+		}		
+		else{
+			alert("password을 입력해주세요.");
+		}
+	}
+	else{
+		alert("아이디 중복확인을 해주세요.");
+	}
+}
+
+function userynBtn(){
+	if($("#m_id").val() != ""){
+		$.ajax({
+			url : 'useryn',
+			data : {
+				m_id : $("#m_id").val()
+			},
+			method : 'GET',
+			success:function(data){
+				if(data == 0){
+					$("#useryn").val("y");
+					alert($("#useryn").val());
+				}else{
+					$("#useryn").val("n");
+					alert($("#useryn").val());
+				}
+			}
+		});
+	}
+	else{
+		alert("아이디를 입력해 주세요.");
+	}
 }
 </script>
 </head>
 <body>
 <div class="container">
-	<form id="accountForm" role="form" action="account" method="post">
+	<form id="accountForm" role="form" action="account" method="post" enctype="multipart/form-data">
 	<div style="width:500px; top:12%;" id="login-box">
 		<!-- 로고, 뒤로/다음 버튼 -->
 		<div class="logo">
@@ -214,17 +251,19 @@ function submitButton(){
 		<div class="controls">
 			<div class="dropzone" id="dropzone" style="float:left; margin-left:15px;margin-right:30px;">
 			  <div><img src="./resources/contents/images/user.png"></div>
-			  <input id="m_img" name="m_img" type="file" accept="image/png, application/pdf" />
+			  <input id="m_img" name="file" type="file" accept="image/png, application/pdf" />
 			</div>
 			<div class="dropzone"id="dropzone2" style="float:left;">
 			  <div><img src="./resources/contents/images/microphone2.png"></div>
-			  <!-- <input id="m_voice" name="m_voice" type="file" /> -->
+			  <input id="m_voice" name="file2" type="file" />  
 			</div>
-			<input type="text" name="m_id" placeholder="Username" class="form-control" />
-			<input type="text" name="m_pw" placeholder="Password" class="form-control" />
+			<span style="color:white;">voice open y/n <input type="radio" id="y" name="m_open" value="1" checked>y  <input type="radio" id="n" name="m_open" value="0">n</span ><a onclick="userynBtn();" href="#"style="float:right;">중복확인</a>
+			<input id="useryn" type="hidden" value="n" >
+			<input type="text" id="m_id" name="m_id" placeholder="Username" class="form-control" required/>
+			<input type="text" id="m_pw" name="m_pw" placeholder="Password" class="form-control" required/>
 			<div ng-app="myApp">
 				<div ng-controller="AppCtrl" align="center">
-					<textarea name="m_info" id="TextArea" ng-model="loremIpsum" ng-keyup="autoExpand($event)" placeholder="Writing your Introduce." ></textarea>
+					<textarea name="m_info" id="m_info" ng-model="loremIpsum" ng-keyup="autoExpand($event)" placeholder="Writing your Introduce." ></textarea>
 				</div>
 			</div>
 			<!-- <button id="account"type="button" class="btn btn-default btn-block">Acount</button> -->

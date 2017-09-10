@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,7 +26,7 @@ public class uploadReviewFileUtils
 		
 		String savedName=originalName;
 		//String savedName=originalName;
-		
+
 		String savedPath = calcPath(uploadPath);
 		//String savedPath=uploadPath;
 		
@@ -36,7 +37,9 @@ public class uploadReviewFileUtils
 		{
 			target.getParentFile().mkdirs();
 		}
+
 		FileCopyUtils.copy(fileData, target);
+
 		
 		return savedPath+File.separator+savedName;
 	}
