@@ -1,7 +1,7 @@
 (function($, window, document, undefined) {
     'use strict';
 
-    $('#js-grid-juicy-projects').cubeportfolio({
+    $('.js-grid-juicy-projects').cubeportfolio({
         filters: '.js-filters-juicy-projects',
         loadMore: '#js-loadMore-juicy-projects',
         loadMoreAction: 'click',

@@ -50,17 +50,17 @@ a {
 	crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function() {
-		$(".main").click(function() {
+		/* $(".main").click(function() {
 			window.location.href = "mainPage";
 		});
-
+ */
 		$(".AllSounds").click(function() {
 			window.location.href = "AllSounds";
 		});
 
-		$(".main").click(function() {
+		/* $(".main").click(function() {
 			window.location.href = "mainPage";
-		});
+		}); */
 
 		$(".SongSounds").click(function() {
 			window.location.href = "SongSounds";

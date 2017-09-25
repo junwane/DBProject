@@ -14,5 +14,6 @@
 		<typeAlias alias="ReplyComment" 		type="yjc.wdb.awesome.bean.ReplyComment"></typeAlias>
 		<typeAlias alias="VoiceComment" 		type="yjc.wdb.awesome.bean.VoiceComment"></typeAlias>
 		<typeAlias alias="Writing" 				type="yjc.wdb.awesome.bean.Writing"></typeAlias>
+		<typeAlias alias="MimiCryMenu" 			type="yjc.wdb.awesome.bean.MimiCryMenu"></typeAlias>
 	</typeAliases>
 </configuration>
