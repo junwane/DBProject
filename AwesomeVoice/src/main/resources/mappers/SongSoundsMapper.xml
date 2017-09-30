@@ -6,16 +6,28 @@
 
 <mapper namespace="yjc.wdb.mapper.SongSoundsMapper">
 
-<select id="AllArtist" resultType="String">
-	select mi_artist from musicinfo group by mi_artist;
-</select>
+	<select id="AllArtist" resultType="String">
+		select mi_artist from musicinfo group by mi_artist;
+	</select>
 
-<select id="selectAlbum" resultType="MusicInfo">
-	select mi_no, mi_title from musicinfo where mi_artist = #{mi_artist}
-</select>
+	<select id="selectAlbum" resultType="MusicInfo">
+		select mi_no, mi_title from musicinfo where mi_artist = #{mi_artist}
+	</select>
 
-<insert id="insertBoard">
-	insert into board(b_title, b_content, b_voicefile, mm_no) values(#{b_title}, #{b_content}, #{b_voicefile}, #{mm_no});
-</insert>
+	<insert id="insertSongsBoard">
+		insert into board(b_title, b_content, b_voicefile, mi_no) values(#{b_title},
+		#{b_content}, #{b_voicefile}, #{mi_no});
+	</insert>
+
+	<insert id="insertSongsBoardWriting">
+		insert into writing values(#{m_id}, 1, last_insert_id(), 1);
+	</insert>
+
+
+	<select id="AllSongsSounds" resultType="java.util.HashMap">
+		select b.*, w.*, mi.mi_img, mi.mi_artist, mi.mi_title from board b, writing
+		w, musicinfo mi where b.b_no = w.b_no and b.mi_no = mi.mi_no and
+		w.bm_no = 1 and b.mi_no != 1 order by b_count desc;
+	</select>
 
 </mapper>

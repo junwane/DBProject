@@ -6,12 +6,29 @@
 
 <mapper namespace="yjc.wdb.mapper.CopySoundsMapper">
 
-<select id="AllMimiCryMenu" resultType="MimiCryMenu">
-	select * from mimicrymenu;
-</select>
+	<select id="AllMimiCryMenu" resultType="MimiCryMenu">
+		select * from mimicrymenu
+		where mm_no != 1;
+	</select>
 
-<insert id="insertBoard">
-	insert into board(b_title, b_content, b_voicefile, mm_no) values(#{b_title}, #{b_content}, #{b_voicefile}, #{mm_no});
-</insert>
+	<insert id="insertCopyBoard">
+		insert into board(b_title, b_content, b_voicefile,
+		mi_no) values(#{b_title},
+		#{b_content}, #{b_voicefile}, 1);
+	</insert>
+
+	<insert id="insertCopyBoardWriting">
+		insert into writing values(#{m_id}, 2,
+		last_insert_id(), #{mm_no});
+	</insert>
+
+	<select id="AllCopySounds" resultType="java.util.HashMap">
+		select b.*, w.*, mm.mm_no,
+		mm.mm_name from board b, writing
+		w, mimicrymenu mm where b.b_no =
+		w.b_no and w.mm_no = mm.mm_no and
+		w.bm_no = 2 order
+		by b_count desc;
+	</select>
 
 </mapper>

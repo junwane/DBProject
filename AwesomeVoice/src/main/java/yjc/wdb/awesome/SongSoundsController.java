@@ -2,16 +2,22 @@ package yjc.wdb.awesome;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import yjc.wdb.awesome.bean.Board;
 import yjc.wdb.awesome.bean.MusicInfo;
+import yjc.wdb.awesome.bean.Writing;
 import yjc.wdb.awesome.dao.SongSoundsDAO;
 
 @Controller
@@ -21,6 +27,9 @@ public class SongSoundsController {
 
 	@Inject 
 	private SongSoundsDAO dao;
+	
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 	
 	@RequestMapping(value = "AllArtist", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
 	@ResponseBody
@@ -71,4 +80,24 @@ public class SongSoundsController {
 		return json.toString();
 	}
 
+	
+	@RequestMapping(value = "insertSongsBoard", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+	public String insertSongsBoard(Board board, HttpSession session, MultipartFile file) throws Exception {
+		
+		String m_id = (String) session.getAttribute("m_id");
+		
+		System.out.println(board.getB_title()+ board.getB_content() + board.getMi_no());
+		
+		if(file.getOriginalFilename() != ""){
+			  String b_voicefile =
+				uploadReviewFileUtils.uploadFile(uploadPath, file.getOriginalFilename(), file.getBytes());
+
+			  board.setB_voicefile(b_voicefile);
+			  System.out.println(b_voicefile);
+		}
+	
+		dao.insertSongsBoard(board, m_id);
+		
+		return "redirect:SongSounds";
+	}
 }

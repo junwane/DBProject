@@ -5,6 +5,14 @@ public class Writing {
 	private String m_id;
 	private int bm_no;
 	private int b_no;
+	private int mm_no;
+	
+	public int getMm_no() {
+		return mm_no;
+	}
+	public void setMm_no(int mm_no) {
+		this.mm_no = mm_no;
+	}
 	public String getM_id() {
 		return m_id;
 	}
