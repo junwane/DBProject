@@ -6,7 +6,23 @@
 
 <mapper namespace="yjc.wdb.mapper.UserMapper">
 
+<!-- 로그인 -->
+<select id="login" resultType="int">
+	select count(*)
+	from member
+	where m_id = #{m_id} and m_pw = #{m_pw}
+</select>
 
+<!-- id 중복확인 -->
+<select id="useryn" resultType="int">
+	select count(*)
+	from member
+	where m_id = #{m_id}
+</select>
 
-
+<!-- 회원 가입 -->
+<insert id="account" parameterType="yjc.wdb.awesome.bean.Member">
+	insert into member(m_id, m_pw, m_img, m_voice, m_open, m_info) 
+	values(#{m_id}, #{m_pw}, #{m_img}, #{m_voice}, #{m_open}, #{m_info})
+</insert>
 </mapper>
