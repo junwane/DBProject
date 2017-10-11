@@ -16,4 +16,5 @@
 		<typeAlias alias="Writing" 				type="yjc.wdb.awesome.bean.Writing"></typeAlias>
 		<typeAlias alias="MimiCryMenu" 			type="yjc.wdb.awesome.bean.MimiCryMenu"></typeAlias>
 	</typeAliases>
+
 </configuration>

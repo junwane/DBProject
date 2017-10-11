@@ -212,14 +212,14 @@ a.btn:hover {
 
 
 		</div>
+
 		<div class="content">
 
 
 			<div class="good-job">
 				<h4 style="color: white;">새글 쓰기</h4>
-				<input type="text" style="width: 100%;" id="b_title"
-					placehoder="제목을 입력하세요" /> <br>
-
+				<input type="text" style="width: 100%;" id="b_title" placehoder="제목을 입력하세요"/>
+				<br>				
 				<h4 style="color: white;">본문을 작성하세요</h4>
 				<textarea style="width: 100%; height: 110px;" id="b_content"></textarea>
 			</div>

@@ -162,8 +162,7 @@ a.btn:hover {
 			<div class="cbp-item movie" data-id="${list.b_no}">
 				<div class="cbp-item-wrap">
 					<div class="cbp-caption">
-						<div class="cbp-caption-defaultWrap">
-						
+						<div class="cbp-caption-defaultWrap">		
 						
 						<c:if test="${list.mm_no == 1}">
 						<img src="resources/contents/images/person.jpg" alt="img3">

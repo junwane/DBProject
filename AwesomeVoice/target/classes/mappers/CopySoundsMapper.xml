@@ -30,5 +30,4 @@
 		w.bm_no = 2 and b.mm_no is not null order
 		by b_count desc;
 	</select>
-
 </mapper>
