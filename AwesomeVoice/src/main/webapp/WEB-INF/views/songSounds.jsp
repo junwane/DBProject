@@ -234,7 +234,7 @@ a.btn:hover {
 
 
 <!-- Modal -->
-<div class="modal-wrapper">
+<div class="modal-wrapper" style="position:aubsolute; z-index:1000;">
 	<div class="modal" style="width: 42%">
 		<div>
 

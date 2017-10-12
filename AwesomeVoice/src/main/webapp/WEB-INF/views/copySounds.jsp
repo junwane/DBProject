@@ -225,7 +225,7 @@ a.btn:hover {
 <!-- /portfolio -->
 
 <!-- Modal -->
-<div class="modal-wrapper">
+<div class="modal-wrapper" style="position:aubsolute; z-index:1000;">
 	<div class="modal">
 		<div>
 
