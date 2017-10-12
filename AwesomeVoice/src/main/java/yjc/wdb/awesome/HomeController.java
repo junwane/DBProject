@@ -23,10 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import yjc.wdb.awesome.bean.Member;
 import yjc.wdb.awesome.dao.CopySoundsDAO;
-<<<<<<< HEAD
 import yjc.wdb.awesome.dao.LookForSoundsDAO;
-=======
->>>>>>> branch 'master' of https://github.com/junwane/DBProject.git
 import yjc.wdb.awesome.dao.MemberDAO;
 import yjc.wdb.awesome.dao.SongSoundsDAO;
 
@@ -46,13 +43,10 @@ public class HomeController {
 	
 	@Inject
 	private CopySoundsDAO copySoundsDAO;
-	
-<<<<<<< HEAD
+
 	@Inject
 	private LookForSoundsDAO lookForSoundsDAO;
-	
-=======
->>>>>>> branch 'master' of https://github.com/junwane/DBProject.git
+
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	/**
