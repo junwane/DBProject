@@ -3,10 +3,13 @@ package yjc.wdb.awesome;
 
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import yjc.wdb.awesome.bean.Member;
+import yjc.wdb.awesome.dao.CopySoundsDAO;
+import yjc.wdb.awesome.dao.LookForSoundsDAO;
 import yjc.wdb.awesome.dao.MemberDAO;
+import yjc.wdb.awesome.dao.SongSoundsDAO;
 
 /**
  * Handles requests for the application home page.
@@ -32,6 +38,15 @@ public class HomeController {
 	@Inject
 	private MemberDAO memberDao;
 	
+	@Inject
+	private SongSoundsDAO songSoundsDao;
+	
+	@Inject
+	private CopySoundsDAO copySoundsDAO;
+
+	@Inject
+	private LookForSoundsDAO lookForSoundsDAO;
+
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	/**
@@ -52,11 +67,14 @@ public class HomeController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login2(Model model, HttpServletRequest req, Member member) throws Exception {
+	public String login2(Model model, HttpServletRequest req, HttpSession session, Member member) throws Exception {
 		member.setM_id(req.getParameter("username"));
 		member.setM_pw(req.getParameter("password"));
+		
+		
 
 		if(memberDao.login(member) == 1){
+			session.setAttribute("m_id", req.getParameter("username"));
 			return "success";
 		}
 		else{
@@ -118,24 +136,32 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/SongSounds", method = RequestMethod.GET)
-	public String SongSounds(Model model) {
+	public String SongSounds(Model model) throws Exception {
 		String content = "songSounds";
+		List<HashMap> list = songSoundsDao.AllSongsSounds();
+		model.addAttribute("list1", list);
 		model.addAttribute("contents", content);
 	
 		return "index";
 	}
 	
 	@RequestMapping(value = "/CopySounds", method = RequestMethod.GET)
-	public String CopySounds(Model model) {
+	public String CopySounds(Model model) throws Exception {
+		List<HashMap> list = copySoundsDAO.AllCopySounds();
 		String content = "copySounds";
+		model.addAttribute("list1", list);
 		model.addAttribute("contents", content);
 	
 		return "index";
 	}
 	
 	@RequestMapping(value = "/LookForSounds", method = RequestMethod.GET)
-	public String LookForSounds(Model model) {
+	public String LookForSounds(Model model) throws Exception {
+		List<HashMap> list = lookForSoundsDAO.AllLookForSounds();
+		
 		String content = "lookForSounds";
+		
+		model.addAttribute("list1", list);
 		model.addAttribute("contents", content);
 	
 		return "index";

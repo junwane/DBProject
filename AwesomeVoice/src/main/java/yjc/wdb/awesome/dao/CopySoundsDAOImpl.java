@@ -1,14 +1,18 @@
+
 package yjc.wdb.awesome.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import yjc.wdb.awesome.bean.Board;
 import yjc.wdb.awesome.bean.MimiCryMenu;
+import yjc.wdb.awesome.bean.Writing;
 
 @Repository
 public class CopySoundsDAOImpl implements CopySoundsDAO {
@@ -25,10 +29,17 @@ public class CopySoundsDAOImpl implements CopySoundsDAO {
 		return sql.selectList(namespace+".AllMimiCryMenu");
 	}
 
+	@Transactional
 	@Override
-	public void insertBoard(Board board) throws Exception {
-		sql.insert(namespace+".insertBoard", board);
+	public void insertCopyBoard(Board board, Writing writing) throws Exception {
+		sql.insert(namespace+".insertCopyBoard", board);
+		sql.insert(namespace+".insertCopyBoardWriting", writing);
 		
+	}
+
+	@Override
+	public List<HashMap> AllCopySounds() throws Exception {
+		return sql.selectList(namespace+".AllCopySounds");
 	}
 
 }

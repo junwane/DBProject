@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <head>
 <style>
@@ -37,9 +39,10 @@ a.btn {
 	background: #222222;
 }
 
-a.btn:hover{
-	color:white;
+a.btn:hover {
+	color: white;
 }
+
 .modal-wrapper {
 	width: 100%;
 	background: rgba(93, 93, 93, 0.5);
@@ -163,7 +166,9 @@ a.btn:hover{
 			});
 			
 			
-		});
+		}); 
+		
+	
 	
 		
 
@@ -174,64 +179,126 @@ a.btn:hover{
 	<a class="btn trigger" href="#"> 노래부르기 등록</a>
 </div>
 
+<div class="portfolio-content portfolio-1" style="margin-top: 5%;">
+
+
+
+	<div class="cbp js-grid-juicy-projects" >
+		<c:if test="${list1 != null}">
+		
+			<c:forEach items="${list1}" var="list" varStatus="i">
+			<div class="cbp-item movie" data-id="${list.b_no}">
+				<div class="cbp-item-wrap">
+					<div class="cbp-caption">
+						<div class="cbp-caption-defaultWrap">
+							<img src="resources/contents/images/album/${list.mi_img}" alt="img3">
+						</div>
+						<div class="cbp-caption-activeWrap">
+							<div class="cbp-l-caption-alignCenter">
+								<div class="cbp-l-caption-body">
+									<div class="btn-group">
+										<a href="projects/project1.html"
+											class="cbp-singlePage btn text-lowercase" rel="nofollow"
+											data-cbp-singlePage="projects">more info</a> <a
+											href="https://www.youtube.com/watch?v=3wbvpOIIBQA"
+											class="cbp-lightbox btn btn-sm text-lowercase btn-right"
+											data-title="GoPro: HERO3+ Black Edition<br>by GoPro">좋아요</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div
+						class="cbp-l-grid-projects-title uppercase text-center uppercase text-center">${list.b_title}</div>
+					<div
+						class="cbp-l-grid-projects-desc uppercase text-center uppercase text-center">${list.mi_artist} / ${list.mi_title}</div>
+				</div>
+			</div>
+
+		</c:forEach>
+		
+		</c:if>
+		
+		<c:if test="${list1 == null }">
+		<div>게시물이 존재하지 않습니다.</div>
+		</c:if>
+	
+	</div>
+
+
+
+	<!-- /Reply Singing-->
+
+</div>
+<!-- /portfolio -->
+
 
 <!-- Modal -->
-<div class="modal-wrapper">
-	<div class="modal" style="width:42%">
+<div class="modal-wrapper" style="position:aubsolute; z-index:1000;">
+	<div class="modal" style="width: 42%">
 		<div>
 
-			<span style="margin: 20px 10px; font-size: 28px; color: white;">SONG SOUNDS</span>
-			
-				
-			<button class="close"
-				style="background: #e2525c; color: white; opacity:1; width: 60px; height: 35px; font-size: 15px; border: none; border-radius: 3px; float: right; margin: 8px 10px; padding: 10px 0;">닫기</button>
-			
-			
-			<button class="btn-close"
-				style="background: #e2525c; color: white; width: 60px; height: 35px; font-size: 15px; border: none; border-radius: 3px; float: right; margin: 8px 10px; padding: 10px 0;">EDIT</button>
-	
-		</div>
-		<div class="content">
+			<span style="margin: 20px 10px; font-size: 28px; color: white;">SONG
+				SOUNDS</span>
 
+
+			<button class="close"
+				style="background: #e2525c; color: white; opacity: 1; width: 60px; height: 35px; font-size: 15px; border: none; border-radius: 3px; float: right; margin: 8px 10px; padding: 10px 0;">닫기</button>
+
+
+
+
+		</div>
+		<form class="content form" action="insertSongsBoard" method="post"
+			enctype="multipart/form-data">
+
+			<button class="btn-close edit" type="submit"
+				style="background: #e2525c; color: white; position: ausolute; width: 60px; height: 35px; font-size: 15px; border: none; border-radius: 3px; float: right; margin: 8px 5px; padding: 10px 0;">EDIT</button>
 
 			<div class="good-job">
 				<h4 style="color: white;">새글 쓰기</h4>
-				<input type="text" style="width: 100%;" id="b_title" placehoder="제목을 입력하세요"/>
-				<div style="margin-top: 10px; height:90px;">
-				
-					<div style="float: left; width: 150px; height:70px; margin-right:35px;">
+				<input type="text" style="width: 100%;" name="b_title" id="b_title"
+					placehoder="제목을 입력하세요" />
+				<div style="margin-top: 10px; height: 90px;">
+
+					<div
+						style="float: left; width: 150px; height: 70px; margin-right: 35px;">
 						<h4 style="color: white;">아티스트</h4>
 						<select id="selectSinger">
-						<option value="0">가수를 선택해주세요</option>
+							<option value="0">가수를 선택해주세요</option>
 						</select>
-		
+
 					</div>
-					<div style="display:none; float:left;  margin-right:15px;" id="showAlbum">
+					<div style="display: none; float: left; margin-right: 15px;"
+						id="showAlbum">
 						<h4 style="color: white;">앨범</h4>
-						<select id="selectAlbum">
-						<option value="0">앨범을 선택해주세요</option>
+						<select name="mi_no" id="selectAlbum">
+							<option value="0">앨범을 선택해주세요</option>
 						</select>
 					</div>
-					
-					<div style="display:none;  float:left; height:70px;" id="showVoicefile">
+
+					<div style="display: none; float: left; height: 70px;"
+						id="showVoicefile">
 						<h4 style="color: white;">음성파일</h4>
-						<input type="file" id="b_voicefile" />
+						<input type="file" name="file" />
 					</div>
 
 				</div>
 
-				
+
 				<div>
-				
+
 					<h4 style="color: white;">본문을 작성하세요</h4>
-				<textarea style="width: 100%; height: 110px;" id="b_content"></textarea>
-				
+					<textarea style="width: 100%; height: 110px;" name="b_content"
+						id="b_content"></textarea>
+
 				</div>
 
-				
+
 			</div>
 
 
-		</div>
+		</form>
 	</div>
 </div>
+
