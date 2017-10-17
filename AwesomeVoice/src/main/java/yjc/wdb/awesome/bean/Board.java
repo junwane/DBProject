@@ -11,7 +11,14 @@ public class Board {
 	private String b_content;
 	private String b_voicefile;
 	private int mi_no;
+	private int mm_no;
 	
+	public int getMm_no() {
+		return mm_no;
+	}
+	public void setMm_no(int mm_no) {
+		this.mm_no = mm_no;
+	}
 	public int getB_no() {
 		return b_no;
 	}

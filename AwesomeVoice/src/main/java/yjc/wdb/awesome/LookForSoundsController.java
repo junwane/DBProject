@@ -1,8 +1,10 @@
+
 package yjc.wdb.awesome;
 
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -22,10 +24,17 @@ public class LookForSoundsController {
 	
 
 	@RequestMapping(value = "insertLookForSounds", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
-	public void insertLookForSounds(String b_title, String b_content) throws Exception {
-		
-		dao.insertBoard(b_title, b_content);
+	public String insertLookForSounds(HttpSession session, String b_title, String b_content) throws Exception {
+		String m_id = (String) session.getAttribute("m_id");
+		dao.insertLookForSoundsBoard(b_title, b_content, m_id);
 	
+		return "redirect:LookForSounds";
 	}
+	
+
+	
+	
+	
 
 }
+

@@ -25,4 +25,5 @@
 	insert into member(m_id, m_pw, m_img, m_voice, m_open, m_info) 
 	values(#{m_id}, #{m_pw}, #{m_img}, #{m_voice}, #{m_open}, #{m_info})
 </insert>
+
 </mapper>

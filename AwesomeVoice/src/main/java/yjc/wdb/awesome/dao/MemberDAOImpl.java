@@ -1,3 +1,4 @@
+
 package yjc.wdb.awesome.dao;
 
 import javax.inject.Inject;
@@ -36,3 +37,4 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 }
+

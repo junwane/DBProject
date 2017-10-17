@@ -1,3 +1,4 @@
+
 package yjc.wdb.awesome.bean;
 
 public class Writing {

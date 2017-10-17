@@ -191,7 +191,7 @@ a.btn:hover {
 				<div class="cbp-item-wrap">
 					<div class="cbp-caption">
 						<div class="cbp-caption-defaultWrap">
-							<img src="resources/contents/images/${list.mi_img}" alt="img3">
+							<img src="resources/contents/images/album/${list.mi_img}" alt="img3">
 						</div>
 						<div class="cbp-caption-activeWrap">
 							<div class="cbp-l-caption-alignCenter">
@@ -234,7 +234,7 @@ a.btn:hover {
 
 
 <!-- Modal -->
-<div class="modal-wrapper">
+<div class="modal-wrapper" style="position:aubsolute; z-index:1000;">
 	<div class="modal" style="width: 42%">
 		<div>
 
@@ -301,5 +301,4 @@ a.btn:hover {
 		</form>
 	</div>
 </div>
-
 

@@ -20,14 +20,13 @@
 	</insert>
 
 	<insert id="insertSongsBoardWriting">
-		insert into writing values(#{m_id}, 1, last_insert_id(), 1);
+		insert into writing values(#{m_id}, 1, last_insert_id());
 	</insert>
-
 
 	<select id="AllSongsSounds" resultType="java.util.HashMap">
 		select b.*, w.*, mi.mi_img, mi.mi_artist, mi.mi_title from board b, writing
 		w, musicinfo mi where b.b_no = w.b_no and b.mi_no = mi.mi_no and
-		w.bm_no = 1 and b.mi_no != 1 order by b_count desc;
+		w.bm_no = 1 and b.mi_no is not null order by b_count desc;
 	</select>
 
 </mapper>

@@ -7,8 +7,19 @@
 <mapper namespace="yjc.wdb.mapper.LookForSoundsMapper">
 
 
-<insert id="insertBoard">
+<insert id="insertLookForSoundsBoard">
 	insert into board(b_title, b_content) values(#{b_title}, #{b_content});
 </insert>
 
+<insert id="insertLookForSoundsBoardWriting">
+	insert into writing values(#{m_id}, 3, last_insert_id());
+</insert>
+
+<select id="AllLookForSounds" resultType="java.util.HashMap">
+select b.*, w.* from board b, writing
+		w where b.b_no =
+		w.b_no and
+		w.bm_no = 3 order
+		by b_count desc;
+</select>
 </mapper>

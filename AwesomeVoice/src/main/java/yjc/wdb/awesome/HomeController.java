@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import yjc.wdb.awesome.bean.Member;
 import yjc.wdb.awesome.dao.CopySoundsDAO;
+import yjc.wdb.awesome.dao.LookForSoundsDAO;
 import yjc.wdb.awesome.dao.MemberDAO;
 import yjc.wdb.awesome.dao.SongSoundsDAO;
 
@@ -42,7 +43,10 @@ public class HomeController {
 	
 	@Inject
 	private CopySoundsDAO copySoundsDAO;
-	
+
+	@Inject
+	private LookForSoundsDAO lookForSoundsDAO;
+
 	@Resource(name = "uploadPath")
 	private String uploadPath;
 	/**
@@ -152,8 +156,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/LookForSounds", method = RequestMethod.GET)
-	public String LookForSounds(Model model) {
+	public String LookForSounds(Model model) throws Exception {
+		List<HashMap> list = lookForSoundsDAO.AllLookForSounds();
+		
 		String content = "lookForSounds";
+		
+		model.addAttribute("list1", list);
 		model.addAttribute("contents", content);
 	
 		return "index";

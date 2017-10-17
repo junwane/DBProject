@@ -162,8 +162,28 @@ a.btn:hover {
 			<div class="cbp-item movie" data-id="${list.b_no}">
 				<div class="cbp-item-wrap">
 					<div class="cbp-caption">
-						<div class="cbp-caption-defaultWrap">
-							<img src="resources/contents/images/" alt="img3">
+						<div class="cbp-caption-defaultWrap">		
+						
+						<c:if test="${list.mm_no == 1}">
+						<img src="resources/contents/images/person.jpg" alt="img3">
+						</c:if>
+						
+						<c:if test="${list.mm_no == 2}">
+						<img src="resources/contents/images/animal.jpg" alt="img3">
+						</c:if>
+						
+						<c:if test="${list.mm_no == 3}">
+						<img src="resources/contents/images/machine.jpg" alt="img3">
+						</c:if>
+						
+						<c:if test="${list.mm_no == 4}">
+						<img src="resources/contents/images/beetbox.jpg" alt="img3">
+						</c:if>
+						
+						<c:if test="${list.mm_no == 5}">
+						<img src="resources/contents/images/etc.jpg" alt="img3">
+						</c:if>
+							
 						</div>
 						<div class="cbp-caption-activeWrap">
 							<div class="cbp-l-caption-alignCenter">
@@ -205,7 +225,7 @@ a.btn:hover {
 <!-- /portfolio -->
 
 <!-- Modal -->
-<div class="modal-wrapper">
+<div class="modal-wrapper" style="position:aubsolute; z-index:1000;">
 	<div class="modal">
 		<div>
 

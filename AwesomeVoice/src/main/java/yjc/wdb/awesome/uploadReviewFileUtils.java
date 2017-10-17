@@ -1,3 +1,4 @@
+
 package yjc.wdb.awesome;
 
 import java.io.BufferedReader;
@@ -15,8 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.FileCopyUtils;
 
-public class uploadReviewFileUtils 
-{
+public class uploadReviewFileUtils {
+	
 	private static final Logger logger=
 			LoggerFactory.getLogger(uploadReviewFileUtils.class);
 	
@@ -43,6 +44,7 @@ public class uploadReviewFileUtils
 		
 		return savedPath+File.separator+savedName;
 	}
+	
 	private static String calcPath(String uploadPath)
 	{
 		Calendar cal= Calendar.getInstance();
@@ -58,51 +60,7 @@ public class uploadReviewFileUtils
 		return realPath;
 	}
 	
-//	�썝蹂몄씠�슂!	
-//	public File extractImage(File videoFile, int position, File creatingImageFile) 
-//	{
-//		try 
-//		{
-//			int seconds = position % 60;
-//			int minutes = (position - seconds) / 60;
-//			int hours = (position - minutes * 60 - seconds) / 60 / 60;
-//
-//			String videoFilePath = videoFile.getAbsolutePath();
-//			String imageFilePath = creatingImageFile.getAbsolutePath();
-//
-//			String[] commands = { "ffmpeg", "-ss",
-//					String.format("%02d:%02d:%02d", hours, minutes, seconds), 
-//					"-i", videoFilePath, "-an", "-vframes", "1", "-y", imageFilePath };
-//
-//			Process processor = Runtime.getRuntime().exec(commands);
-//
-//			String line1 = null;
-//
-//			BufferedReader error = new BufferedReader(new InputStreamReader(processor.getErrorStream()));
-//			
-//			while ((line1 = error.readLine()) != null) 
-//			{
-//				logger.debug(line1);
-//			}
-//			processor.waitFor();
-//			int exitValue = processor.exitValue();
-//			if (exitValue != 0) 
-//			{
-//				throw new RuntimeException("exit code is not 0 [" + exitValue+ "]");
-//			}
-//			return creatingImageFile;
-//
-//		} 
-//		catch (IOException e) 
-//		{
-//			throw new RuntimeException(e);
-//		} 
-//		catch (InterruptedException e) 
-//		{
-//			throw new RuntimeException(e);
-//		}
-//	}
-	
+
 	public static String extractImage(String videoFile, int position, String creatingImageFile, String post_id) 
 	{
 		try 
