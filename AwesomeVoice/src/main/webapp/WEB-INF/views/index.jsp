@@ -50,24 +50,10 @@ a {
 	crossorigin="anonymous"></script>
 <script>
 	$(document).ready(function() {
-<<<<<<< HEAD
-		/* $(".main").click(function() {
-			window.location.href = "mainPage";
-		});
- */
-=======
 
->>>>>>> branch 'master' of https://github.com/junwane/DBProject.git
 		$(".AllSounds").click(function() {
 			window.location.href = "AllSounds";
 		});
-<<<<<<< HEAD
-
-		/* $(".main").click(function() {
-			window.location.href = "mainPage";
-		}); */
-=======
->>>>>>> branch 'master' of https://github.com/junwane/DBProject.git
 
 		$(".SongSounds").click(function() {
 			window.location.href = "SongSounds";
