@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yjc.wdb.mapper.UnKnownSoundsMapper">
+
+	<select id="UnknownChattingRoom" resultType="ChattingRoom">
+		select * from chattingroom order by cr_date;
+	</select>
+	
+	<insert id="insertChattingRoom">
+		insert into chattingroom (cr_id, cr_abbot, cr_title, cr_image)
+		values(#{cr_id},#{cr_abbot},#{cr_title},#{fileName})
+	</insert>
+
+</mapper>

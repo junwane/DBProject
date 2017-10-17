@@ -35,7 +35,11 @@
 	<context:component-scan base-package="yjc.wdb.awesome" />
 	
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-	
+	    <!-- MultipartResolver -->
+	    
+
+
+
 	
 	
 </beans:beans>

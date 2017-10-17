@@ -361,8 +361,8 @@ address a i:hover {
 .menu {
     width: 195px;
     float: left;
-    margin-left: 20px;
-    margin-right: 33px;
+    padding-left: 20px;
+    padding-right: 33px;
 }
 
 .cbp-filter-item {

@@ -3,6 +3,7 @@ package yjc.wdb.awesome;
 
 
 import java.io.File;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,11 +22,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import yjc.wdb.awesome.bean.ChattingRoom;
 import yjc.wdb.awesome.bean.Member;
 import yjc.wdb.awesome.dao.CopySoundsDAO;
 import yjc.wdb.awesome.dao.LookForSoundsDAO;
 import yjc.wdb.awesome.dao.MemberDAO;
 import yjc.wdb.awesome.dao.SongSoundsDAO;
+import yjc.wdb.awesome.dao.UnKnownSoundsDAO;
 
 /**
  * Handles requests for the application home page.
@@ -46,6 +49,9 @@ public class HomeController {
 
 	@Inject
 	private LookForSoundsDAO lookForSoundsDAO;
+	
+	@Inject
+	private UnKnownSoundsDAO unknownSoundsDAO;
 
 	@Resource(name = "uploadPath")
 	private String uploadPath;
@@ -169,8 +175,22 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/UnknownSounds", method = RequestMethod.GET)
-	public String UnknownSounds(Model model) {
+	public String UnknownSounds(Model model) throws Exception {
+		
+		List<ChattingRoom> list = unknownSoundsDAO.UnknownChattingRoom() ;
+		
 		String content = "unknownSounds";
+		
+		System.out.println(list.get(0).getCr_title());
+		model.addAttribute("list", list);
+		model.addAttribute("contents", content);
+	
+		return "index";
+	}
+	
+	@RequestMapping(value = "/UnknownSoundsChattingRoom", method = RequestMethod.GET)
+	public String UnknownSoundsChattingRoom(Model model) {
+		String content = "unknownSoundsChattingRoom";
 		model.addAttribute("contents", content);
 	
 		return "index";

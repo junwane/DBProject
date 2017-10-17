@@ -54,6 +54,10 @@ a {
 		$(".AllSounds").click(function() {
 			window.location.href = "AllSounds";
 		});
+		
+		$(".main").click(function() {
+			window.location.href = "mainPage";
+		});
 
 		$(".SongSounds").click(function() {
 			window.location.href = "SongSounds";
