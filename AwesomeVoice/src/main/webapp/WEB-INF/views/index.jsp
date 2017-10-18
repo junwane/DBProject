@@ -55,9 +55,9 @@ a {
 			window.location.href = "AllSounds";
 		});
 		
-		$(".main").click(function() {
+		/* $(".main").click(function() {
 			window.location.href = "mainPage";
-		});
+		}); */
 
 		$(".SongSounds").click(function() {
 			window.location.href = "SongSounds";

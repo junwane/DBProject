@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import yjc.wdb.awesome.bean.Board;
 import yjc.wdb.awesome.bean.ChattingRoom;
 import yjc.wdb.awesome.bean.Member;
 import yjc.wdb.awesome.dao.CopySoundsDAO;
@@ -74,16 +75,18 @@ public class HomeController {
 	@ResponseBody
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login2(Model model, HttpServletRequest req, HttpSession session, Member member) throws Exception {
+		
 		member.setM_id(req.getParameter("username"));
 		member.setM_pw(req.getParameter("password"));
-		
-		
-
+		System.out.println("Ω√πﬂ");
+		System.out.println(member.getM_id()+"∫Òπ¯ Ω√πﬂ:"+member.getM_pw());
+		System.out.println("«œ¿’"+memberDao.login(member) + "«œ¿’");
 		if(memberDao.login(member) == 1){
 			session.setAttribute("m_id", req.getParameter("username"));
 			return "success";
 		}
 		else{
+			
 			return "fail";
 		}
 	}
@@ -205,10 +208,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/MyPage", method = RequestMethod.GET)
-	public String MyPage(Model model) {
+	public String MyPage(Model model, HttpSession session) throws Exception {
 		String content = "MyPage";
 		model.addAttribute("contents", content);
-	
+		
+		String m_id = (String)session.getAttribute("m_id");
+		
+		List<Board> myPosts = memberDao.myPosts(m_id);
+		model.addAttribute("myPosts", myPosts);
+		
+		model.addAttribute("m_img", memberDao.selectPhoto(m_id));
 		return "index";
 	}
 
