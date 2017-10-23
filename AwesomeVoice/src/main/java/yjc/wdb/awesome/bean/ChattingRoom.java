@@ -8,6 +8,7 @@ public class ChattingRoom {
 	private String cr_abbot ;
 	private String cr_date;
 	private String cr_title;
+	private int cr_room ;
 	private String fileName;
 	private MultipartFile cr_image;
 	private int cr_count = 1 ;
@@ -59,6 +60,13 @@ public class ChattingRoom {
 	public void setCr_count(int cr_count) {
 		this.cr_count = cr_count;
 	}
+	public int getCr_room() {
+		return cr_room;
+	}
+	public void setCr_room(int cr_room) {
+		this.cr_room = cr_room;
+	}
+
 	
 	
 

@@ -175,22 +175,28 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/UnknownSounds", method = RequestMethod.GET)
-	public String UnknownSounds(Model model) throws Exception {
+	public String UnknownSounds(Model model, HttpSession session) throws Exception {
 		
 		List<ChattingRoom> list = unknownSoundsDAO.UnknownChattingRoom() ;
 		
 		String content = "unknownSounds";
 		
-		System.out.println(list.get(0).getCr_title());
-		model.addAttribute("list", list);
+		if(list.size() > 0){
+			model.addAttribute("list", list);
+		}
+		//int count = unknownSoundsDAO.chattingRoomCount();
 		model.addAttribute("contents", content);
-	
+		model.addAttribute("m_id", session.getAttribute("m_id"));
 		return "index";
 	}
 	
 	@RequestMapping(value = "/UnknownSoundsChattingRoom", method = RequestMethod.GET)
-	public String UnknownSoundsChattingRoom(Model model) {
+	public String UnknownSoundsChattingRoom(Model model ,int cr_no ,String cr_id, String cr_title, String cr_image) {
 		String content = "unknownSoundsChattingRoom";
+		System.out.println("cr_no : " + cr_id );
+		model.addAttribute("cr_no" , cr_no);
+		model.addAttribute("cr_id" , cr_id);
+		model.addAttribute("cr_title" , cr_title);
 		model.addAttribute("contents", content);
 	
 		return "index";

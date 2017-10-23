@@ -30,4 +30,40 @@ public class UnKnownSoundsDAOImpl implements UnKnownSoundsDAO{
 		sql.selectList(namespace + ".insertChattingRoom", cr);
 	}
 
+	@Override
+	public int chattingRoomCount(int cr_no) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne(namespace + ".chattingRoomCount", cr_no);
+	}
+
+	@Override
+	public int chattingRoomNo(String m_id) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne(namespace + ".chattingRoomNo", m_id);
+	}
+
+	@Override
+	public void insertChattingRoomEnter(ChattingRoom cr) throws Exception {
+		// TODO Auto-generated method stub
+		sql.insert(namespace + ".insertChattingRoomEnter",cr);
+	}
+
+	@Override
+	public List<ChattingRoom> chattingRoonOther(int cr_no1) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectList(namespace + ".chattingRoonOther", cr_no1);
+	}
+
+	@Override
+	public void exitChatting(ChattingRoom cr) throws Exception {
+		// TODO Auto-generated method stub
+		sql.delete(namespace + ".exitChatting", cr);
+	}
+
+	@Override
+	public String unknownChattingOther(String m_id) throws Exception {
+		// TODO Auto-generated method stub
+		return sql.selectOne(namespace + ".unknownChattingOther", m_id);
+	}
+
 }

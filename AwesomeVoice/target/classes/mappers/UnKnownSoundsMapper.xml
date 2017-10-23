@@ -7,12 +7,31 @@
 <mapper namespace="yjc.wdb.mapper.UnKnownSoundsMapper">
 
 	<select id="UnknownChattingRoom" resultType="ChattingRoom">
-		select * from chattingroom order by cr_date;
+		select * from chattingroom where cr_abbot is not null order by cr_date;
 	</select>
-	
+
 	<insert id="insertChattingRoom">
 		insert into chattingroom (cr_id, cr_abbot, cr_title, cr_image)
 		values(#{cr_id},#{cr_abbot},#{cr_title},#{fileName})
 	</insert>
+	<select id="chattingRoomCount" resultType="int">
+		select count(*) from chattingroom where cr_no = #{cr_no} or cr_room = #{cr_no}
+	</select>
+	<select id="chattingRoomNo" resultType="int">
+		select cr_no from chattingroom where cr_id = #{m_id} and cr_abbot=#{m_id}
+	</select>
+	<insert id="insertChattingRoomEnter">
+		insert into chattingroom (cr_id, cr_room)
+		values (#{cr_id},#{cr_no})
+	</insert>
+	<select id="chattingRoonOther" resultType="ChattingRoom">
+		select * from chattingroom where cr_no = #{cr_no1}
+	</select>
+	<delete id="exitChatting">
+		delete from chattingroom where (cr_no = #{cr_no} or cr_room =#{cr_room})and cr_id = #{cr_id}
+	</delete>
+	<select id="unknownChattingOther" resultType="String">
+		select cr_id from chattingroom where cr_room = (select cr_no from chattingroom where cr_id= #{m_id})
+	</select>
 
 </mapper>

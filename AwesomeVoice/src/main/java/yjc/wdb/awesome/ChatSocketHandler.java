@@ -1,5 +1,6 @@
 package yjc.wdb.awesome;
 
+
 import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,6 +18,11 @@ public class ChatSocketHandler extends TextWebSocketHandler {
 	 public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		  log(session.getId() + " 연결 됨!!");
 		  users.put(session.getId(), session);
+		  if(users.size() >= 2){
+			  for (WebSocketSession s : users.values()) {
+				   s.sendMessage(new TextMessage("2"));
+			  }
+		  }
 	 }
 	
 	 @Override

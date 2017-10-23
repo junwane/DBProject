@@ -164,16 +164,48 @@ $(document).ready(function(){
 	});
 	
 	$(".createChatting").click(function(){
-		$("form").attr("method","POST");
-		$("form").attr("action","createChattingRoom");
-		$("form")[0].submit();
+		
+		console.log("dd : " + $("#m_id").text());
+		if($("#m_id").text() != ""){
+			$("form").attr("method","POST");
+			$("form").attr("action","createChattingRoom");
+			$("form")[0].submit();
+		}else{
+			alert("로그인 후 이용해주세요");
+		}
+	})
+	
+	$(".enter").click(function(){
+		var data_code = $(this).parent().parent().attr("data-code");
+		var count ;
+		
+		$.ajax({
+			url : "chattingRoomCount",
+			type: "POST",
+			data: {
+				data_code : data_code
+			},
+			success : function(data){
+				count = data ;
+				console.log("count : " + count);
+			}
+		})
+		
+		if(count >= 2){
+			alert("방이 꽉 찼습니다");
+		}else{
+			
+			window.location = "chattingRoomEnter?cr_no="+data_code;
+			
+		}
 	})
 })
 </script>
 </head>
 <div id="wrap">
+	<div id="m_id" style="display:none">${m_id}</div>
 	<div class="page-wrapper">
-		<a class="btn trigger" href="#"> 채팅 방 만들기</a>
+		<a class="btn trigger" href="#"> 채팅방 생성</a>
 	</div>
 			<c:if test="${list == null}">
 				<div>게시물이 존재하지 않습니다.</div>
@@ -187,7 +219,7 @@ $(document).ready(function(){
 						<div class="roomText" >
 							<h4>${list.cr_title}</h4>
 							<div>(${list.cr_count}/2)</div>
-							<button class="btn">참여하기</button>
+							<button class="btn enter">참여하기</button>
 						</div>
 					</div>
 				</c:forEach>
