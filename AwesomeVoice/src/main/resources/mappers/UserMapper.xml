@@ -26,4 +26,14 @@
 	values(#{m_id}, #{m_pw}, #{m_img}, #{m_voice}, #{m_open}, #{m_info})
 </insert>
 
+<!-- 마이페이지 : 최근 작성 게시물 불러오기 -->
+<select id="myPosts" resultType="Board">
+	select * from board where b_no in (select b_no from writing where m_id = #{m_id}) limit 8
+</select>
+
+<!-- 프로필 사진 불러오기 -->
+<select id="selectPhoto" resultType="String">
+	select m_img from member where m_id = #{m_id}
+</select>
+
 </mapper>
